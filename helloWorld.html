@@ -1,23 +1,7 @@
 <template>
     <lightning-card title="HelloWorld" icon-name="custom:custom14">
-        <div class="slds-m-around_medium">
-            <p>Hello  {greeting} , </p>
-            <lightning-input label="Name" value={greeting} onchange={greetingChangeHandler}></lightning-input>
-        </div>
 
-        <div class="slds-m-around_medium">
-            <p class="slds-m-bottom_small">
-                <lightning-button label="Load Contacts" onclick={handleLoadContactClick}></lightning-button>
-            </p>
-            <template if:true={contactsListByLoad}>
-                <template for:each={contactsListByLoad} for:item="contact">
-                    <p key={contact.Id}>{contact.Name}</p>
-                </template>
-            </template>
-            <template if:true={error}>
-                <p>{error}</p>
-            </template>
-        </div>
+        ContactSearch
 
         <div class="slds-m-around_medium">
             <lightning-input type="search" onchange={handleAutoloadInputChange} class="slds-m-bottom_small" label="Search" value={searchKey}></lightning-input>

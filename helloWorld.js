@@ -1,15 +1,10 @@
-import { LightningElement, wire, track } from 'lwc';
+import { LightningElement, wire} from 'lwc';
 
-import getContactList from '@salesforce/apex/ContactController.getContactList';
 import findContacts from '@salesforce/apex/ContactController.findContacts';
 const DELAY = 300;
 
 
 export default class HelloWorld extends LightningElement {
-  @track contactsListByLoad;
-  @track error;
-
-  greeting = 'Hello World!';
 
   connectedCallback() {
   }
@@ -17,20 +12,6 @@ export default class HelloWorld extends LightningElement {
   disconnectedCallback() {
   }
 
-  greetingChangeHandler(event) {
-    this.greeting = event.target.value;
-  }
-
-  handleLoadContactClick() {
-    getContactList()
-        .then(result => {
-            this.contactsListByLoad = result;
-        })
-        .catch(error => {
-            this.error = error;
-        });
-  }
-  
   searchKey = '';
   @wire(findContacts, { searchKey: '$searchKey' })
   autoSearchedContacts;
